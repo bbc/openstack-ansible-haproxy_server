@@ -33,6 +33,8 @@ haproxy_stats_port: 1936
 haproxy_username: admin
 haproxy_stats_password: secrete
 haproxy_stats_refresh_interval: 60
+# Pin stats gathering to one or more processes when using nbproc tuning
+# haproxy_stats_process: all
 
 # Default haproxy backup nodes to empty list so this doesn't have to be
 # defined for each service.

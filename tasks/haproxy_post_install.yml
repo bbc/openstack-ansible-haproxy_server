@@ -62,7 +62,7 @@
 
 #NOTE(jrosser) The next task fails on Centos7 without this,
 #an empty directory rather than a file is made and the bind mount fails
-- name: Ensure empty file is availble to bind mount log socket
+- name: Ensure empty file is available to bind mount log socket
   file:
     state: touch
     path: "{{ haproxy_log_mount_point }}"

@@ -40,6 +40,10 @@ listen stats
     bind {{ haproxy_stats_bind_address }}:{{ haproxy_stats_port }} {% if haproxy_ssl | bool %}ssl crt {{ haproxy_ssl_pem }} ciphers {{ haproxy_ssl_cipher_suite }}{% endif %}
 
     mode http
+{% if haproxy_stats_prometheus_enabled | bool %}
+    option http-use-htx
+    http-request use-service prometheus-exporter if { path /metrics }
+{% endif %}
     stats enable
     stats hide-version
     stats realm Haproxy\ Statistics
